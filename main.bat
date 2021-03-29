@@ -1,10 +1,13 @@
 @echo off
+::Move to this program's directory
 cd "%~dp0"
+::The starting parts
 echo {> rehid.json
 echo "remappings":[>> rehid.json
 
 goto mainLoop
 :isValidKey1
+::pain
 if %ans1%==a set ans1=A
 if %ans1%==b set ans1=B
 if %ans1%==x set ans1=X
@@ -73,15 +76,19 @@ if %lo%==0 goto fail
 goto saveToJson
 
 :fail
+::Bad key, restart this entry
 echo Bad key detected, please try again
 pause
 cls
 goto mainLoop
 
 :saveToJson
+::Whether or not to add a comma at the end of the entry
 set /p ans3=Do you want to make another replacement? (y/n) 
 if %ans3%==Y goto more
 if %ans3%==y goto more
+
+::User chose to end the file, add the end braces and no comma
 echo {"get":"%ans2%", "press":"%ans1%"}>>rehid.json
 echo ]>> rehid.json
 echo }>> rehid.json
@@ -93,6 +100,14 @@ goto mainLoop
 
 :mainLoop
 cls
+::Take the keys
 set /p ans1=What key do you want to replace? 
 set /p ans2=What key do you want to replace it with? 
+::Move to the key checking process
 goto isValidKey1
+
+:end
+cls
+echo File generated, move the generated rehid.json to your SD card's rehid folder
+echo You can find the generated rehid.json at %CD%\rehid.json
+pause
