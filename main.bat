@@ -84,9 +84,9 @@ goto mainLoop
 
 :saveToJson
 ::Whether or not to add a comma at the end of the entry
-set /p ans3=Do you want to make another replacement? (y/n) 
-if %ans3%==Y goto more
-if %ans3%==y goto more
+choice /m "Do you want to make another replacement?"
+if %ERRORLEVEL%==1 goto more
+if %ERRORLEVEL%==1 goto more
 
 ::User chose to end the file, add the end braces and no comma
 echo {"get":"%ans2%", "press":"%ans1%"}>>rehid.json
