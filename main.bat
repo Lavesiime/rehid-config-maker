@@ -86,7 +86,6 @@ goto mainLoop
 ::Whether or not to add a comma at the end of the entry
 choice /m "Do you want to make another replacement?"
 if %ERRORLEVEL%==1 goto more
-if %ERRORLEVEL%==1 goto more
 
 ::User chose to end the file, add the end braces and no comma
 echo {"get":"%ans2%", "press":"%ans1%"}>>rehid.json
