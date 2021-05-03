@@ -6,6 +6,7 @@ echo {> rehid.json
 echo "remappings":[>> rehid.json
 
 goto mainLoop
+
 :isValidKey1
 ::pain
 if %ans1%==a set ans1=A
@@ -39,7 +40,6 @@ if %ans1%==RIGHT set lo=1
 if %ans1%==START set lo=1
 if %ans1%==SELECT set lo=1
 if %lo%==0 goto fail
-goto isValidKey2
 
 :isValidKey2
 if %ans2%==a set ans2=A
